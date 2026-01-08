@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useAppState } from "@/context/AppStateProvider";
 import { CommitmentSummary } from "@/components/CommitmentSummary";
@@ -9,7 +9,7 @@ import { getUserId } from "@/lib/user";
 import { formatDate, formatGrams } from "@/lib/format";
 import type { BankConnection } from "@/types";
 
-export default function ConsentPage() {
+function ConsentPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const reservationId = searchParams.get("reservationId");
@@ -326,6 +326,20 @@ export default function ConsentPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function ConsentPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ConsentPageContent />
+    </Suspense>
   );
 }
 

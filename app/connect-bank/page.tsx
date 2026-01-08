@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useAppState } from "@/context/AppStateProvider";
 import { SPANISH_BANKS } from "@/data/catalogs";
@@ -9,7 +9,7 @@ import { nanoid } from "nanoid";
 
 type WizardStep = 1 | 2 | 3;
 
-export default function ConnectBankPage() {
+function ConnectBankPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const reservationId = searchParams.get("reservationId");
@@ -435,5 +435,19 @@ export default function ConnectBankPage() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function ConnectBankPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ConnectBankPageContent />
+    </Suspense>
   );
 }
