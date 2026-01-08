@@ -121,6 +121,16 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
               {isRoasterView ? "Switch to Customer View" : "Switch to Roaster View"}
             </Link>
 
+            {isRoasterView && (
+              <Link
+                href="/roaster/financing"
+                className="block w-full text-left px-3 py-2 bg-amber-50 dark:bg-amber-900/20 hover:bg-amber-100 dark:hover:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-sm font-medium transition-colors"
+                onClick={() => setIsExpanded(false)}
+              >
+                View Financing Offer
+              </Link>
+            )}
+
             {dropId && (
               <button
                 onClick={handleSimulateReservations}
