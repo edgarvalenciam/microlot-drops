@@ -104,8 +104,8 @@ function ConsentPageContent() {
     );
   }
 
-  // Calculate commitment values
-  const maxAmount = drop.prices[reservation.size];
+  // Calculate commitment values (price per bag * quantity)
+  const maxAmount = drop.prices[reservation.size] * reservation.quantity;
   const deadline = new Date(drop.deadlineISO);
   const validUntil = new Date(deadline);
   validUntil.setHours(validUntil.getHours() + 24);

@@ -138,7 +138,7 @@ export default function MyProfilePage() {
                     commitmentId: commitment.id,
                     dropId: drop.id,
                     userId,
-                    amount: drop.prices[reservation.size],
+                    amount: drop.prices[reservation.size] * reservation.quantity,
                     beneficiary: `Microlot Drops (for ${drop.roaster})`,
                     reference: `Microlot Drop — ${drop.name}`,
                   });
@@ -249,7 +249,7 @@ export default function MyProfilePage() {
                 if (!drop) return null;
 
                 const status = getDropStatus(drop, state.reservations);
-                const price = drop.prices[reservation.size];
+                const price = drop.prices[reservation.size] * reservation.quantity;
                 const deadline = new Date(drop.deadlineISO);
                 const now = new Date();
                 const canCancel = now <= deadline;
@@ -361,7 +361,7 @@ export default function MyProfilePage() {
                                 commitmentId: commitment.id,
                                 dropId: drop.id,
                                 userId,
-                                amount: drop.prices[reservation.size],
+                                amount: drop.prices[reservation.size] * reservation.quantity,
                                 beneficiary: `Microlot Drops (for ${drop.roaster})`,
                                 reference: `Microlot Drop — ${drop.name}`,
                               });
@@ -421,7 +421,7 @@ export default function MyProfilePage() {
                 const drop = getReservationDrop(reservation.dropId);
                 if (!drop) return null;
 
-                const price = drop.prices[reservation.size];
+                const price = drop.prices[reservation.size] * reservation.quantity;
 
                 return (
                   <div

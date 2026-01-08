@@ -119,7 +119,7 @@ export function PaymentButton({
         )}
       </button>
       <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-        Amount: €{drop.prices[reservation.size].toFixed(2)}
+        Amount: €{(drop.prices[reservation.size] * reservation.quantity).toFixed(2)}
       </p>
     </div>
   );

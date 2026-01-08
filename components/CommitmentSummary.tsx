@@ -18,7 +18,8 @@ export function CommitmentSummary({
   selectedAccountId,
   bankConnections = [],
 }: CommitmentSummaryProps) {
-  const maxAmount = drop.prices[reservation.size];
+  // Calculate max amount (price per bag * quantity)
+  const maxAmount = drop.prices[reservation.size] * reservation.quantity;
   
   // Calculate validity: deadline + 24 hours
   const deadline = new Date(drop.deadlineISO);
@@ -76,7 +77,7 @@ export function CommitmentSummary({
           {formatCurrency(maxAmount)}
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-          Based on {reservation.size} size selection
+          {reservation.quantity} × {reservation.size} @ {formatCurrency(drop.prices[reservation.size])} each
         </div>
       </div>
 

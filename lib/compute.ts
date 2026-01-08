@@ -86,15 +86,23 @@ export function getDropAvailableGrams(
 
 /**
  * Check if a reservation can be made for requested grams
+ * Only errors if total would exceed 115% of goal (cap)
  */
 export function canReserveGrams(
   drop: Drop,
   reservations: Reservation[],
   requestedGrams: number
 ): { ok: boolean; availableGrams: number } {
-  const availableGrams = getDropAvailableGrams(drop, reservations);
+  const reservedGrams = getDropReservedGrams(drop.id, reservations);
+  const capGrams = getDropCapGrams(drop);
+  const totalAfterReservation = reservedGrams + requestedGrams;
+  
+  // Only error if total would exceed 115% cap
+  const ok = totalAfterReservation <= capGrams;
+  const availableGrams = Math.max(0, capGrams - reservedGrams);
+  
   return {
-    ok: requestedGrams <= availableGrams,
+    ok,
     availableGrams,
   };
 }
