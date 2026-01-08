@@ -33,7 +33,7 @@ export function PaymentButton({
         window.location.href = `/receipt/${paymentId}`;
       }, 1000);
     } catch (err) {
-      setError("Payment failed. Please try again.");
+      setError("Error en el pago. Por favor intenta de nuevo.");
       setStatus("idle");
     }
   };
@@ -56,7 +56,7 @@ export function PaymentButton({
             />
           </svg>
           <span className="text-green-800 dark:text-green-200 font-medium">
-            Payment confirmed!
+            ¡Pago confirmado!
           </span>
         </div>
       </div>
@@ -97,7 +97,7 @@ export function PaymentButton({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Processing payment...
+            Procesando pago...
           </>
         ) : (
           <>
@@ -114,12 +114,12 @@ export function PaymentButton({
                 d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
               />
             </svg>
-            Pay now (1 click)
+            Pagar ahora (1 clic)
           </>
         )}
       </button>
       <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-        Amount: €{(drop.prices[reservation.size] * reservation.quantity).toFixed(2)}
+        Cantidad: €{(drop.prices[reservation.size] * reservation.quantity).toFixed(2)}
       </p>
     </div>
   );

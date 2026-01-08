@@ -18,7 +18,7 @@ export function DonutChart({ data, title }: DonutChartProps) {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700 text-center">
         <p className="text-gray-600 dark:text-gray-400">
-          No data available for chart
+          No hay datos disponibles para el gráfico
         </p>
       </div>
     );
@@ -54,7 +54,7 @@ export function DonutChart({ data, title }: DonutChartProps) {
           <Tooltip
             formatter={(value: unknown) => [
               typeof value === "number" ? value : 0,
-              "Sales",
+              "Ventas",
             ]}
             contentStyle={{
               backgroundColor: "rgba(255, 255, 255, 0.95)",

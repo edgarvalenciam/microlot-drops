@@ -31,13 +31,13 @@ export default function EditDropPage({
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Drop not found
+            Drop no encontrado
           </h1>
           <Link
             href="/roaster"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to dashboard
+            Volver al panel
           </Link>
         </div>
       </div>
@@ -67,7 +67,7 @@ export default function EditDropPage({
     const newErrors: Record<string, string> = {};
 
     if (formData.name.length < 3) {
-      newErrors.name = "Name must be at least 3 characters";
+      newErrors.name = "El nombre debe tener al menos 3 caracteres";
     }
 
     const price250g = parseFloat(formData.price250g);
@@ -75,20 +75,20 @@ export default function EditDropPage({
     const price1kg = parseFloat(formData.price1kg);
 
     if (isNaN(price250g) || price250g <= 0) {
-      newErrors.price250g = "Price must be a positive number";
+      newErrors.price250g = "El precio debe ser un número positivo";
     }
 
     if (isNaN(price500g) || price500g <= 0) {
-      newErrors.price500g = "Price must be a positive number";
+      newErrors.price500g = "El precio debe ser un número positivo";
     }
 
     if (isNaN(price1kg) || price1kg <= 0) {
-      newErrors.price1kg = "Price must be a positive number";
+      newErrors.price1kg = "El precio debe ser un número positivo";
     }
 
     const goalGrams = parseInt(formData.goalGrams);
     if (isNaN(goalGrams) || goalGrams <= 0) {
-      newErrors.goalGrams = "Goal grams must be a positive number";
+      newErrors.goalGrams = "Los gramos objetivo deben ser un número positivo";
     }
 
     setErrors(newErrors);
@@ -132,7 +132,7 @@ export default function EditDropPage({
       router.push("/roaster");
     } catch (error) {
       console.error("Error updating drop:", error);
-      setErrors({ submit: "Failed to update drop. Please try again." });
+      setErrors({ submit: "Error al actualizar el drop. Por favor intenta de nuevo." });
     } finally {
       setIsSubmitting(false);
     }
@@ -150,38 +150,38 @@ export default function EditDropPage({
           href="/roaster"
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
         >
-          ← Back to dashboard
+          ← Volver al panel
         </Link>
 
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Edit Drop
+            Editar Drop
           </h1>
           <button
             onClick={() => setShowDeleteModal(true)}
             className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
           >
-            Delete Drop
+            Eliminar Drop
           </button>
         </div>
 
         {/* Performance Summary */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6 border border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            Performance
+            Rendimiento
           </h2>
           <div className="grid grid-cols-3 gap-4">
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Status
+                Estado
               </div>
               <div className="text-lg font-semibold text-gray-900 dark:text-white">
-                {status}
+                {status === "ACTIVE" ? "Activo" : status === "COMPLETED" ? "Completado" : "Caducado"}
               </div>
             </div>
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Reserved
+                Reservado
               </div>
               <div className="text-lg font-semibold text-gray-900 dark:text-white">
                 {formatGrams(reservedGrams)} / {formatGrams(drop.goalGrams)}
@@ -189,7 +189,7 @@ export default function EditDropPage({
             </div>
             <div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Fill Rate
+                Tasa de Llenado
               </div>
               <div className="text-lg font-semibold text-gray-900 dark:text-white">
                 {progress}%
@@ -202,7 +202,7 @@ export default function EditDropPage({
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Drop Name <span className="text-red-500">*</span>
+              Nombre del Drop <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -222,7 +222,7 @@ export default function EditDropPage({
           {/* Origin */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Origin <span className="text-red-500">*</span>
+              Origen <span className="text-red-500">*</span>
             </label>
             <select
               value={formData.origin}
@@ -242,7 +242,7 @@ export default function EditDropPage({
           {/* Process */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Process <span className="text-red-500">*</span>
+              Proceso <span className="text-red-500">*</span>
             </label>
             <select
               value={formData.process}
@@ -266,7 +266,7 @@ export default function EditDropPage({
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                250g Price (€) <span className="text-red-500">*</span>
+                Precio 250g (€) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -286,7 +286,7 @@ export default function EditDropPage({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                500g Price (€) <span className="text-red-500">*</span>
+                Precio 500g (€) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -306,7 +306,7 @@ export default function EditDropPage({
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                1kg Price (€) <span className="text-red-500">*</span>
+                Precio 1kg (€) <span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -329,7 +329,7 @@ export default function EditDropPage({
           {/* Goal Grams */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Goal (grams) <span className="text-red-500">*</span>
+              Objetivo (gramos) <span className="text-red-500">*</span>
             </label>
             <input
               type="number"
@@ -350,7 +350,7 @@ export default function EditDropPage({
           {/* Deadline */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Deadline <span className="text-red-500">*</span>
+              Fecha Límite <span className="text-red-500">*</span>
             </label>
             <input
               type="date"
@@ -365,7 +365,7 @@ export default function EditDropPage({
           {/* Roast Date Estimate */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Estimated Roast Date (optional)
+              Fecha Estimada de Tostado (opcional)
             </label>
             <input
               type="date"
@@ -383,7 +383,7 @@ export default function EditDropPage({
           {/* Tasting Notes */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Tasting Notes (optional, comma-separated)
+              Notas de Cata (opcional, separadas por comas)
             </label>
             <input
               type="text"
@@ -408,14 +408,14 @@ export default function EditDropPage({
               href="/roaster"
               className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors text-center"
             >
-              Cancel
+              Cancelar
             </Link>
             <button
               type="submit"
               disabled={isSubmitting}
               className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
             >
-              {isSubmitting ? "Updating..." : "Update Drop"}
+              {isSubmitting ? "Actualizando..." : "Actualizar Drop"}
             </button>
           </div>
         </form>
@@ -423,10 +423,10 @@ export default function EditDropPage({
         {/* Delete Confirmation Modal */}
         <ConfirmModal
           isOpen={showDeleteModal}
-          title="Delete Drop"
-          message={`Are you sure you want to delete "${drop.name}"? This action cannot be undone.`}
-          confirmText="Delete Drop"
-          cancelText="Cancel"
+          title="Eliminar Drop"
+          message={`¿Estás seguro de que quieres eliminar "${drop.name}"? Esta acción no se puede deshacer.`}
+          confirmText="Eliminar Drop"
+          cancelText="Cancelar"
           variant="danger"
           onConfirm={handleDelete}
           onCancel={() => setShowDeleteModal(false)}

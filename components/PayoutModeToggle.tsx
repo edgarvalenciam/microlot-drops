@@ -15,7 +15,7 @@ export function PayoutModeToggle({
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
       <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-        Payout Mode
+        Modo de Desembolso
       </h2>
       <div className="space-y-4">
         {/* NORMAL Mode Option */}
@@ -42,13 +42,13 @@ export function PayoutModeToggle({
                   )}
                 </div>
                 <span className="font-semibold text-gray-900 dark:text-white">
-                  Normal Payout
+                  Desembolso Normal
                 </span>
               </div>
               <div className="ml-6 space-y-1 text-sm text-gray-600 dark:text-gray-400">
-                <p>Settlement: T+3 (3 business days)</p>
+                <p>Liquidación: T+3 (3 días hábiles)</p>
                 <p className="font-medium text-green-600 dark:text-green-400">
-                  Fee: {formatCurrency(0)}
+                  Comisión: {formatCurrency(0)}
                 </p>
               </div>
             </div>
@@ -79,13 +79,13 @@ export function PayoutModeToggle({
                   )}
                 </div>
                 <span className="font-semibold text-gray-900 dark:text-white">
-                  Instant Payout
+                  Desembolso Instantáneo
                 </span>
               </div>
               <div className="ml-6 space-y-1 text-sm text-gray-600 dark:text-gray-400">
-                <p>Settlement: T+0 / T+1 (same day or next day)</p>
+                <p>Liquidación: T+0 / T+1 (mismo día o día siguiente)</p>
                 <p className="font-medium text-orange-600 dark:text-orange-400">
-                  Fee: 1.0% of gross payout amount
+                  Comisión: 1.0% del monto bruto del desembolso
                 </p>
               </div>
             </div>

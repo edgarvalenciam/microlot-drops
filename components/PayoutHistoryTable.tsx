@@ -13,6 +13,16 @@ export function PayoutHistoryTable({
   payouts,
   drops,
 }: PayoutHistoryTableProps) {
+  const statusLabels: Record<PayoutStatus, string> = {
+    PAID: "Pagado",
+    SCHEDULED: "Programado",
+  };
+
+  const modeLabels: Record<PayoutMode, string> = {
+    INSTANT: "Instantáneo",
+    NORMAL: "Normal",
+  };
+
   const getStatusColor = (status: PayoutStatus) => {
     switch (status) {
       case "PAID":
@@ -48,25 +58,25 @@ export function PayoutHistoryTable({
           <thead className="bg-gray-50 dark:bg-gray-700">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Date
+                Fecha
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                 Drop
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Gross
+                Bruto
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Fee
+                Comisión
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Net
+                Neto
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Mode
+                Modo
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Status
+                Estado
               </th>
             </tr>
           </thead>
@@ -77,7 +87,7 @@ export function PayoutHistoryTable({
                   colSpan={7}
                   className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
                 >
-                  No payouts yet
+                  Aún no hay desembolsos
                 </td>
               </tr>
             ) : (
@@ -102,7 +112,7 @@ export function PayoutHistoryTable({
                         </Link>
                       ) : (
                         <span className="text-sm text-gray-500 dark:text-gray-400">
-                          Unknown drop
+                          Drop desconocido
                         </span>
                       )}
                     </td>
@@ -121,7 +131,7 @@ export function PayoutHistoryTable({
                           payout.mode
                         )}`}
                       >
-                        {payout.mode}
+                        {modeLabels[payout.mode]}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -130,7 +140,7 @@ export function PayoutHistoryTable({
                           payout.status
                         )}`}
                       >
-                        {payout.status}
+                        {statusLabels[payout.status]}
                       </span>
                     </td>
                   </tr>

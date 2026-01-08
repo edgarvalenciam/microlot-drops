@@ -34,13 +34,13 @@ export default function ReservePage({
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Drop not found
+            Drop no encontrado
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -58,21 +58,21 @@ export default function ReservePage({
             href={`/drop/${drop.id}`}
             className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
           >
-            ← Back to drop
+            ← Volver al drop
           </Link>
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700 text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Cannot Reserve
+              No se puede Reservar
             </h1>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              This drop is {status.toLowerCase()} and no longer accepting
-              reservations.
+              Este drop está {status === "COMPLETED" ? "completado" : status === "EXPIRED" ? "caducado" : "activo"} y ya no acepta
+              reservas.
             </p>
             <Link
               href={`/drop/${drop.id}`}
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
             >
-              View Drop Details
+              Ver Detalles del Drop
             </Link>
           </div>
         </main>
@@ -119,13 +119,13 @@ export default function ReservePage({
           href={`/drop/${drop.id}`}
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
         >
-          ← Back to drop
+          ← Volver al drop
         </Link>
 
         {/* Drop Info Header */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6 border border-gray-200 dark:border-gray-700">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Reserve {drop.name}
+            Reservar {drop.name}
           </h1>
           <div className="flex flex-wrap gap-2 mb-4">
             <span
@@ -148,14 +148,14 @@ export default function ReservePage({
             </span>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Deadline: {formatDate(drop.deadlineISO)}
+            Fecha límite: {formatDate(drop.deadlineISO)}
           </p>
         </div>
 
         {/* Reservation Form */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-            Reservation Details
+            Detalles de la Reserva
           </h2>
           <ReservationForm drop={drop} onSubmit={handleSubmit} />
         </div>
@@ -163,9 +163,9 @@ export default function ReservePage({
         {/* Info Box */}
         <div className="mt-6 bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
           <p className="text-sm text-blue-800 dark:text-blue-200">
-            <strong>Note:</strong> Your reservation is free and holds your spot.
-            You will only be charged if the drop reaches its goal of{" "}
-            {formatGrams(drop.goalGrams)} before {formatDate(drop.deadlineISO)}.
+            <strong>Nota:</strong> Tu reserva es gratuita y garantiza tu lugar.
+            Solo se te cobrará si el drop alcanza su objetivo de{" "}
+            {formatGrams(drop.goalGrams)} antes del {formatDate(drop.deadlineISO)}.
           </p>
         </div>
       </main>

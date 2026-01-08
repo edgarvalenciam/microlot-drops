@@ -93,7 +93,7 @@ export default function RoasterDashboardPage() {
               Roaster Dashboard
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
-              Loading...
+              Cargando...
             </p>
           </div>
         </main>
@@ -108,7 +108,7 @@ export default function RoasterDashboardPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-              Roaster Dashboard
+              Panel de Tostador
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
               {CURRENT_ROASTER}
@@ -118,7 +118,7 @@ export default function RoasterDashboardPage() {
             href="/roaster/drops/new"
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
           >
-            Create New Drop
+            Crear Nuevo Drop
           </Link>
         </div>
 
@@ -129,18 +129,18 @@ export default function RoasterDashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <DonutChart
             data={chartDataByOrigin}
-            title="Sales by Origin"
+            title="Ventas por Origen"
           />
           <DonutChart
             data={chartDataByProcess}
-            title="Sales by Process"
+            title="Ventas por Proceso"
           />
         </div>
 
         {/* Drops Table */}
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            My Drops ({roasterDrops.length})
+            Mis Drops ({roasterDrops.length})
           </h2>
           <DropsTable
             drops={roasterDrops}

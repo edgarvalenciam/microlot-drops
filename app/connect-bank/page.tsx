@@ -33,13 +33,13 @@ function ConnectBankPageContent() {
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Reservation ID required
+            Se requiere ID de reserva
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -53,7 +53,7 @@ function ConnectBankPageContent() {
 
   const handleContinueFromStep1 = () => {
     if (!selectedBankId) {
-      alert("Please select a bank");
+      alert("Por favor selecciona un banco");
       return;
     }
     setStep(2);
@@ -62,11 +62,11 @@ function ConnectBankPageContent() {
   // Step 2: Login
   const handleLogin = async () => {
     if (!username || username.length < 3) {
-      alert("Username must be at least 3 characters");
+      alert("El nombre de usuario debe tener al menos 3 caracteres");
       return;
     }
     if (!password || password.length < 6) {
-      alert("Password must be at least 6 characters");
+      alert("La contraseña debe tener al menos 6 caracteres");
       return;
     }
 
@@ -79,12 +79,12 @@ function ConnectBankPageContent() {
       {
         id: nanoid(),
         iban: `ES91${Math.floor(Math.random() * 100000000000000000)}`,
-        displayName: "Current Account",
+        displayName: "Cuenta Corriente",
       },
       {
         id: nanoid(),
         iban: `ES91${Math.floor(Math.random() * 100000000000000000)}`,
-        displayName: "Savings Account",
+        displayName: "Cuenta de Ahorros",
       },
     ];
     setFetchedAccounts(mockAccounts);
@@ -139,17 +139,17 @@ function ConnectBankPageContent() {
           href={`/reserve/${reservationId}`}
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
         >
-          ← Back to reservation
+          ← Volver a la reserva
         </Link>
 
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-6 border border-gray-200 dark:border-gray-700">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Connect Your Bank
+            Conecta Tu Banco
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            Select a bank account to authorize the payment commitment. This
-            connection is secure and uses regulated Open Banking technology.
+            Selecciona una cuenta bancaria para autorizar el compromiso de pago. Esta
+            conexión es segura y utiliza tecnología regulada de Open Banking.
           </p>
           
           {/* Progress Steps */}
@@ -158,21 +158,21 @@ function ConnectBankPageContent() {
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 1 ? "bg-blue-600 text-white" : "bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400"}`}>
                 1
               </div>
-              <span className="ml-2 text-sm font-medium">Select Bank</span>
+              <span className="ml-2 text-sm font-medium">Seleccionar Banco</span>
             </div>
             <div className={`flex-1 h-1 mx-2 ${step >= 2 ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-600"}`} />
             <div className={`flex items-center ${step >= 2 ? "text-blue-600 dark:text-blue-400" : "text-gray-400"}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 2 ? "bg-blue-600 text-white" : "bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400"}`}>
                 2
               </div>
-              <span className="ml-2 text-sm font-medium">Login</span>
+              <span className="ml-2 text-sm font-medium">Iniciar Sesión</span>
             </div>
             <div className={`flex-1 h-1 mx-2 ${step >= 3 ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-600"}`} />
             <div className={`flex items-center ${step >= 3 ? "text-blue-600 dark:text-blue-400" : "text-gray-400"}`}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${step >= 3 ? "bg-blue-600 text-white" : "bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400"}`}>
                 3
               </div>
-              <span className="ml-2 text-sm font-medium">Success</span>
+              <span className="ml-2 text-sm font-medium">Éxito</span>
             </div>
           </div>
         </div>
@@ -183,23 +183,23 @@ function ConnectBankPageContent() {
             {hasExistingConnections && (
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6 border border-gray-200 dark:border-gray-700">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Existing Connections
+                  Conexiones Existentes
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  You have {connectedBanks.length} connected bank{connectedBanks.length > 1 ? "s" : ""}.
+                  Tienes {connectedBanks.length} banco{connectedBanks.length > 1 ? "s" : ""} conectado{connectedBanks.length > 1 ? "s" : ""}.
                 </p>
                 <div className="flex gap-4">
                   <button
                     onClick={handleUseExisting}
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                   >
-                    Use Existing Connection
+                    Usar Conexión Existente
                   </button>
                   <button
                     onClick={() => setConnectNewBank(true)}
                     className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                   >
-                    Connect Another Bank
+                    Conectar Otro Banco
                   </button>
                 </div>
               </div>
@@ -208,13 +208,13 @@ function ConnectBankPageContent() {
             {(!hasExistingConnections || connectNewBank) && step === 1 && (
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700 mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-                  Select Your Bank
+                  Selecciona Tu Banco
                 </h2>
                 <div className="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4 mb-6">
                   <p className="text-sm text-blue-800 dark:text-blue-200">
-                    <strong>🔒 Secure Connection:</strong> We use a regulated Open Banking
-                    provider to securely connect your bank account. Your credentials are
-                    never shared with us.
+                    <strong>🔒 Conexión Segura:</strong> Utilizamos un proveedor regulado de Open Banking
+                    para conectar de forma segura tu cuenta bancaria. Tus credenciales
+                    nunca se comparten con nosotros.
                   </p>
                 </div>
                 <div className="space-y-3">
@@ -262,14 +262,14 @@ function ConnectBankPageContent() {
                   href={`/reserve/${reservationId}`}
                   className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors text-center"
                 >
-                  Cancel
+                  Cancelar
                 </Link>
                 <button
                   onClick={handleContinueFromStep1}
                   disabled={!selectedBankId}
                   className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                 >
-                  Continue
+                  Continuar
                 </button>
               </div>
             )}
@@ -281,42 +281,42 @@ function ConnectBankPageContent() {
           <>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700 mb-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-                Login to {SPANISH_BANKS.find(b => b.id === selectedBankId)?.name}
+                Iniciar Sesión en {SPANISH_BANKS.find(b => b.id === selectedBankId)?.name}
               </h2>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Username
+                    Nombre de Usuario
                   </label>
                   <input
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your username"
+                    placeholder="Ingresa tu nombre de usuario"
                     disabled={isLoading}
                   />
                   {username && username.length < 3 && (
                     <p className="text-sm text-red-600 dark:text-red-400 mt-1">
-                      Username must be at least 3 characters
+                      El nombre de usuario debe tener al menos 3 caracteres
                     </p>
                   )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Password
+                    Contraseña
                   </label>
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter your password"
+                    placeholder="Ingresa tu contraseña"
                     disabled={isLoading}
                   />
                   {password && password.length < 6 && (
                     <p className="text-sm text-red-600 dark:text-red-400 mt-1">
-                      Password must be at least 6 characters
+                      La contraseña debe tener al menos 6 caracteres
                     </p>
                   )}
                 </div>
@@ -328,14 +328,14 @@ function ConnectBankPageContent() {
                 className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors"
                 disabled={isLoading}
               >
-                Back
+                Atrás
               </button>
               <button
                 onClick={handleLogin}
                 disabled={isLoading || !username || username.length < 3 || !password || password.length < 6}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
               >
-                {isLoading ? "Connecting..." : "Login"}
+                {isLoading ? "Conectando..." : "Iniciar Sesión"}
               </button>
             </div>
           </>
@@ -362,16 +362,16 @@ function ConnectBankPageContent() {
                   </svg>
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                  Connection Successful!
+                  ¡Conexión Exitosa!
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Your {SPANISH_BANKS.find(b => b.id === selectedBankId)?.name} account has been connected.
+                  Tu cuenta de {SPANISH_BANKS.find(b => b.id === selectedBankId)?.name} ha sido conectada.
                 </p>
               </div>
 
               <div className="mt-6">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Select an Account
+                  Selecciona una Cuenta
                 </h3>
                 <div className="space-y-3">
                   {fetchedAccounts.map((account) => (
@@ -421,14 +421,14 @@ function ConnectBankPageContent() {
                 onClick={() => setStep(2)}
                 className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors"
               >
-                Back
+                Atrás
               </button>
               <button
                 onClick={handleFinish}
                 disabled={!selectedAccountId}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
               >
-                Continue
+                Continuar
               </button>
             </div>
           </>
@@ -443,7 +443,7 @@ export default function ConnectBankPage() {
     <Suspense fallback={
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+          <p className="text-gray-600 dark:text-gray-400">Cargando...</p>
         </div>
       </div>
     }>

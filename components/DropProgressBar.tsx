@@ -17,17 +17,17 @@ export function DropProgressBar({ drop, reservations }: DropProgressBarProps) {
 
   const statusConfig = {
     ACTIVE: {
-      label: "Active",
+      label: "Activo",
       barColor: "bg-green-600",
       textColor: "text-green-700 dark:text-green-400",
     },
     COMPLETED: {
-      label: "Completed",
+      label: "Completado",
       barColor: "bg-blue-600",
       textColor: "text-blue-700 dark:text-blue-400",
     },
     EXPIRED: {
-      label: "Expired",
+      label: "Caducado",
       barColor: "bg-gray-400",
       textColor: "text-gray-600 dark:text-gray-400",
     },
@@ -57,7 +57,7 @@ export function DropProgressBar({ drop, reservations }: DropProgressBarProps) {
         />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-        {formatGrams(Math.max(0, drop.goalGrams - reservedGrams))} remaining to reach goal
+        {formatGrams(Math.max(0, drop.goalGrams - reservedGrams))} restantes para alcanzar el objetivo
       </p>
     </div>
   );

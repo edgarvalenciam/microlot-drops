@@ -55,13 +55,13 @@ export function CommitmentSummary({
   return (
     <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 space-y-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-        Payment Commitment Summary
+        Resumen del Compromiso de Pago
       </h3>
 
       {/* Beneficiary */}
       <div>
         <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-          Beneficiary
+          Beneficiario
         </div>
         <div className="text-base text-gray-900 dark:text-white">
           {beneficiary}
@@ -71,42 +71,42 @@ export function CommitmentSummary({
       {/* Max Amount */}
       <div>
         <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-          Maximum Amount
+          Cantidad Máxima
         </div>
         <div className="text-2xl font-bold text-gray-900 dark:text-white">
           {formatCurrency(maxAmount)}
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-          {reservation.quantity} × {reservation.size} @ {formatCurrency(drop.prices[reservation.size])} each
+          {reservation.quantity} × {reservation.size} @ {formatCurrency(drop.prices[reservation.size])} cada uno
         </div>
       </div>
 
       {/* Validity */}
       <div>
         <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-          Valid Until
+          Válido Hasta
         </div>
         <div className="text-base text-gray-900 dark:text-white">
           {formatDate(validUntil.toISOString())}
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-          24 hours after drop deadline
+          24 horas después de la fecha límite del drop
         </div>
       </div>
 
       {/* Condition - Most Important */}
       <div className="bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded-lg p-4">
         <div className="text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-          ⚠️ Payment Condition
+          ⚠️ Condición de Pago
         </div>
         <div className="text-sm text-yellow-900 dark:text-yellow-100">
-          You will <strong>only be charged</strong> if the drop reaches its goal
-          of <strong>{formatGrams(drop.goalGrams)}</strong> before the deadline
-          of <strong>{formatDate(drop.deadlineISO)}</strong>.
+          Solo se te <strong>cobrará</strong> si el drop alcanza su objetivo
+          de <strong>{formatGrams(drop.goalGrams)}</strong> antes de la fecha límite
+          del <strong>{formatDate(drop.deadlineISO)}</strong>.
         </div>
         <div className="text-xs text-yellow-800 dark:text-yellow-200 mt-2">
-          If the drop does not complete, no charge will be made and your
-          reservation will be automatically canceled.
+          Si el drop no se completa, no se realizará ningún cargo y tu
+          reserva se cancelará automáticamente.
         </div>
       </div>
 
@@ -114,7 +114,7 @@ export function CommitmentSummary({
       {accountInfo && (
         <div>
           <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-            Selected Account
+            Cuenta Seleccionada
           </div>
           <div className="text-base text-gray-900 dark:text-white">
             {accountInfo.bankName} • {accountInfo.displayName || accountInfo.accountNumber}
@@ -130,7 +130,7 @@ export function CommitmentSummary({
       {/* Reference */}
       <div>
         <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-          Reference
+          Referencia
         </div>
         <div className="text-base text-gray-900 dark:text-white font-mono">
           Microlot Drop — {drop.name}

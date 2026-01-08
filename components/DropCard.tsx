@@ -16,6 +16,12 @@ export function DropCard({ drop, reservations }: DropCardProps) {
   const progress = getDropProgress(drop, reservations);
   const reservedGrams = getDropReservedGrams(drop.id, reservations);
 
+  const statusLabels = {
+    ACTIVE: "ACTIVO",
+    COMPLETED: "COMPLETADO",
+    EXPIRED: "CADUCADO",
+  };
+
   const statusColors = {
     ACTIVE: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     COMPLETED:
@@ -60,7 +66,7 @@ export function DropCard({ drop, reservations }: DropCardProps) {
           <span
             className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[status]}`}
           >
-            {status}
+            {statusLabels[status]}
           </span>
         </div>
 
@@ -68,7 +74,7 @@ export function DropCard({ drop, reservations }: DropCardProps) {
         <div className="mb-4">
           <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
             <span>
-              {formatGrams(reservedGrams)} / {formatGrams(drop.goalGrams)} reserved
+              {formatGrams(reservedGrams)} / {formatGrams(drop.goalGrams)} reservados
             </span>
             <span>{progress}%</span>
           </div>
@@ -89,7 +95,7 @@ export function DropCard({ drop, reservations }: DropCardProps) {
         {/* Pricing */}
         <div className="mb-4">
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-            Starting at:
+            Desde:
           </p>
           <p className="text-lg font-semibold text-gray-900 dark:text-white">
             €{drop.prices["250g"].toFixed(2)} / 250g
@@ -98,7 +104,7 @@ export function DropCard({ drop, reservations }: DropCardProps) {
 
         {/* Deadline */}
         <div className="text-sm text-gray-500 dark:text-gray-400">
-          Deadline: {formatDate(drop.deadlineISO)} ({formatDateRelative(drop.deadlineISO)})
+          Fecha límite: {formatDate(drop.deadlineISO)} ({formatDateRelative(drop.deadlineISO)})
         </div>
       </div>
     </Link>

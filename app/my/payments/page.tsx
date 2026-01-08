@@ -19,6 +19,12 @@ export default function PaymentsHistoryPage() {
       return new Date(dateB).getTime() - new Date(dateA).getTime();
     });
 
+  const statusLabels: Record<string, string> = {
+    INITIATED: "Iniciado",
+    CONFIRMED: "Confirmado",
+    FAILED: "Fallido",
+  };
+
   const statusColors = {
     INITIATED:
       "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
@@ -33,13 +39,13 @@ export default function PaymentsHistoryPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-            Payments History
+            Historial de Pagos
           </h1>
           <Link
             href="/my"
             className="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors"
           >
-            Back to My Reservations
+            Volver a Mis Reservas
           </Link>
         </div>
 
@@ -47,16 +53,16 @@ export default function PaymentsHistoryPage() {
         {myPayments.length === 0 ? (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-12 border border-gray-200 dark:border-gray-700 text-center">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-              No payments yet
+              Aún no hay pagos
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Your payment history will appear here once you complete a purchase.
+              Tu historial de pagos aparecerá aquí una vez que completes una compra.
             </p>
             <Link
               href="/"
               className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
             >
-              Browse Drops
+              Explorar Drops
             </Link>
           </div>
         ) : (
@@ -66,22 +72,22 @@ export default function PaymentsHistoryPage() {
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                      Date
+                      Fecha
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                      Amount
+                      Cantidad
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                       Drop
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                      Roaster
+                      Tostador
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                      Status
+                      Estado
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                      Action
+                      Acción
                     </th>
                   </tr>
                 </thead>
@@ -110,7 +116,7 @@ export default function PaymentsHistoryPage() {
                               {drop.name}
                             </Link>
                           ) : (
-                            <span className="text-gray-400">Unknown drop</span>
+                            <span className="text-gray-400">Drop desconocido</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
@@ -120,7 +126,7 @@ export default function PaymentsHistoryPage() {
                           <span
                             className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[payment.status]}`}
                           >
-                            {payment.status}
+                            {statusLabels[payment.status] || payment.status}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -128,7 +134,7 @@ export default function PaymentsHistoryPage() {
                             href={`/receipt/${payment.id}`}
                             className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
                           >
-                            View Receipt
+                            Ver Recibo
                           </Link>
                         </td>
                       </tr>

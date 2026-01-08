@@ -42,13 +42,13 @@ function ConsentPageContent() {
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Reservation ID required
+            Se requiere ID de reserva
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -60,7 +60,7 @@ function ConsentPageContent() {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-400">Redirecting to bank connection...</p>
+          <p className="text-gray-600 dark:text-gray-400">Redirigiendo a la conexión bancaria...</p>
         </div>
       </div>
     );
@@ -72,13 +72,13 @@ function ConsentPageContent() {
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Reservation not found
+            Reserva no encontrada
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -91,13 +91,13 @@ function ConsentPageContent() {
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Drop not found
+            Drop no encontrado
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -127,12 +127,12 @@ function ConsentPageContent() {
 
   const handleAuthorize = async () => {
     if (!agreedToPrivacy || !agreedToCondition) {
-      alert("Please accept all terms to continue");
+      alert("Por favor acepta todos los términos para continuar");
       return;
     }
 
     if (!selectedAccountId) {
-      alert("Please select an account");
+      alert("Por favor selecciona una cuenta");
       return;
     }
 
@@ -157,7 +157,7 @@ function ConsentPageContent() {
       }, 500);
     } catch (error) {
       console.error("Error creating commitment:", error);
-      alert("Failed to authorize commitment. Please try again.");
+      alert("Error al autorizar el compromiso. Por favor intenta de nuevo.");
     } finally {
       setIsLoading(false);
     }
@@ -173,31 +173,31 @@ function ConsentPageContent() {
           href={`/connect-bank?reservationId=${reservationId}`}
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
         >
-          ← Back to bank selection
+          ← Volver a la selección de banco
         </Link>
 
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-6 border border-gray-200 dark:border-gray-700">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Authorize Payment Commitment
+            Autorizar Compromiso de Pago
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Please review the payment commitment details and authorize the
-            transaction below.
+            Por favor revisa los detalles del compromiso de pago y autoriza la
+            transacción a continuación.
           </p>
         </div>
 
         {/* Bank & Account Selection */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mb-6 border border-gray-200 dark:border-gray-700">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-            Select Bank Account
+            Seleccionar Cuenta Bancaria
           </h2>
           
           {/* Bank Selection */}
           {connectedBanks.length > 1 && (
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Bank
+                Banco
               </label>
               <select
                 value={selectedBankConnectionId || ""}
@@ -216,7 +216,7 @@ function ConsentPageContent() {
           {/* Account Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Account
+              Cuenta
             </label>
             <div className="space-y-3">
               {availableAccounts.map((account) => (
@@ -282,14 +282,14 @@ function ConsentPageContent() {
               className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
             <div className="text-sm text-gray-700 dark:text-gray-300">
-              I agree to the{" "}
+              Acepto la{" "}
               <a
                 href="#"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                privacy policy
+                política de privacidad
               </a>{" "}
-              and consent to data processing for payment purposes.
+              y consiento el procesamiento de datos con fines de pago.
             </div>
           </label>
 
@@ -301,9 +301,9 @@ function ConsentPageContent() {
               className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
             <div className="text-sm text-gray-700 dark:text-gray-300">
-              I understand that{" "}
-              <strong>no charge will be made</strong> if the drop does not
-              complete before the deadline.
+              Entiendo que{" "}
+              <strong>no se realizará ningún cargo</strong> si el drop no se
+              completa antes de la fecha límite.
             </div>
           </label>
         </div>
@@ -314,14 +314,14 @@ function ConsentPageContent() {
             href={`/connect-bank?reservationId=${reservationId}`}
             className="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors text-center"
           >
-            Cancel
+            Cancelar
           </Link>
           <button
             onClick={handleAuthorize}
             disabled={!canSubmit}
             className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
           >
-            {isLoading ? "Authorizing..." : "Authorize Commitment"}
+            {isLoading ? "Autorizando..." : "Autorizar Compromiso"}
           </button>
         </div>
       </main>

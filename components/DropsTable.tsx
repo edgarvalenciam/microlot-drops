@@ -17,6 +17,12 @@ export function DropsTable({
   reservations,
   onDelete,
 }: DropsTableProps) {
+  const statusLabels: Record<string, string> = {
+    ACTIVE: "Activo",
+    COMPLETED: "Completado",
+    EXPIRED: "Caducado",
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "ACTIVE":
@@ -37,22 +43,22 @@ export function DropsTable({
           <thead className="bg-gray-50 dark:bg-gray-700">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Drop Name
+                Nombre del Drop
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Origin / Process
+                Origen / Proceso
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Progress
+                Progreso
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Status
+                Estado
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Deadline
+                Fecha Límite
               </th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                Actions
+                Acciones
               </th>
             </tr>
           </thead>
@@ -63,7 +69,7 @@ export function DropsTable({
                   colSpan={6}
                   className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
                 >
-                  No drops found
+                  No se encontraron drops
                 </td>
               </tr>
             ) : (
@@ -111,7 +117,7 @@ export function DropsTable({
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(status)}`}
                       >
-                        {status}
+                        {statusLabels[status] || status}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
@@ -123,14 +129,14 @@ export function DropsTable({
                           href={`/roaster/drops/${drop.id}`}
                           className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300"
                         >
-                          Edit
+                          Editar
                         </Link>
                         {onDelete && (
                           <button
                             onClick={() => onDelete(drop.id)}
                             className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300"
                           >
-                            Delete
+                            Eliminar
                           </button>
                         )}
                       </div>

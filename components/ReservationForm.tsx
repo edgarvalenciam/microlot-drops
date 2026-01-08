@@ -36,19 +36,19 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
     const newErrors: typeof errors = {};
 
     if (!size) {
-      newErrors.size = "Please select a size";
+      newErrors.size = "Por favor selecciona un tamaño";
     }
 
     if (!quantity || quantity < 1) {
-      newErrors.quantity = "Quantity must be at least 1";
+      newErrors.quantity = "La cantidad debe ser al menos 1";
     }
 
     if (!grind) {
-      newErrors.grind = "Please select a grind type";
+      newErrors.grind = "Por favor selecciona un tipo de molido";
     }
 
     if (!delivery) {
-      newErrors.delivery = "Please select a delivery method";
+      newErrors.delivery = "Por favor selecciona un método de entrega";
     }
 
     setErrors(newErrors);
@@ -86,17 +86,17 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       }, 2000);
     } catch (error) {
       console.error("Error creating reservation:", error);
-      const errorMessage = error instanceof Error ? error.message : "Failed to create reservation";
+      const errorMessage = error instanceof Error ? error.message : "Error al crear la reserva";
       
       // Check if it's a cap exceeded error
       if (errorMessage.startsWith("CAP_EXCEEDED:")) {
         const availableGrams = parseInt(errorMessage.split(":")[1]) || 0;
         setErrors({
-          delivery: `You can't reserve that much. This drop is nearly sold out. Max available: ${formatGrams(availableGrams)}.`,
+          delivery: `No puedes reservar tanto. Este drop está casi agotado. Máximo disponible: ${formatGrams(availableGrams)}.`,
         });
       } else {
         setErrors({
-          delivery: "Failed to create reservation. Please try again.",
+          delivery: "Error al crear la reserva. Por favor intenta de nuevo.",
         });
       }
     } finally {
@@ -111,7 +111,7 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       {/* Size Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Size <span className="text-red-500">*</span>
+          Tamaño <span className="text-red-500">*</span>
         </label>
         <div className="grid grid-cols-3 gap-3">
           {(["250g", "500g", "1kg"] as const).map((s) => (
@@ -145,7 +145,7 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       {/* Quantity Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Quantity <span className="text-red-500">*</span>
+          Cantidad <span className="text-red-500">*</span>
         </label>
         <input
           type="number"
@@ -168,14 +168,14 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       {/* Grind Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Grind Type <span className="text-red-500">*</span>
+          Tipo de Molido <span className="text-red-500">*</span>
         </label>
         <div className="grid grid-cols-2 gap-3">
           {[
-            { value: "whole", label: "Whole Bean" },
+            { value: "whole", label: "Grano Entero" },
             { value: "espresso", label: "Espresso" },
-            { value: "filter", label: "Filter" },
-            { value: "press", label: "French Press" },
+            { value: "filter", label: "Filtro" },
+            { value: "press", label: "Prensa Francesa" },
           ].map((option) => (
             <button
               key={option.value}
@@ -204,12 +204,12 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       {/* Delivery Selection */}
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Delivery Method <span className="text-red-500">*</span>
+          Método de Entrega <span className="text-red-500">*</span>
         </label>
         <div className="grid grid-cols-2 gap-3">
           {[
-            { value: "shipping", label: "Shipping" },
-            { value: "pickup", label: "Pickup" },
+            { value: "shipping", label: "Envío" },
+            { value: "pickup", label: "Recogida" },
           ].map((option) => (
             <button
               key={option.value}
@@ -253,7 +253,7 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
       {isSuccess && (
         <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-lg p-4">
           <p className="text-green-800 dark:text-green-200 font-medium">
-            ✓ Reservation created successfully!
+            ✓ ¡Reserva creada con éxito!
           </p>
         </div>
       )}
@@ -264,7 +264,7 @@ export function ReservationForm({ drop, onSubmit }: ReservationFormProps) {
         disabled={isLoading || isSuccess}
         className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors"
       >
-        {isLoading ? "Creating reservation..." : "Create Reservation"}
+        {isLoading ? "Creando reserva..." : "Crear Reserva"}
       </button>
     </form>
   );

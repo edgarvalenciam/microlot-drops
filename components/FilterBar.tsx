@@ -36,6 +36,11 @@ export function FilterBar({
   const statusRef = useRef<HTMLDivElement>(null);
 
   const statusOptions: DropStatus[] = ["ACTIVE", "COMPLETED", "EXPIRED"];
+  const statusLabels: Record<DropStatus, string> = {
+    ACTIVE: "Activo",
+    COMPLETED: "Completado",
+    EXPIRED: "Caducado",
+  };
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -81,7 +86,7 @@ export function FilterBar({
                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
-            Origin {selectedOrigin && `: ${selectedOrigin}`}
+            Origen {selectedOrigin && `: ${selectedOrigin}`}
           </button>
           {showOrigin && (
             <div className="absolute z-10 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
@@ -92,7 +97,7 @@ export function FilterBar({
                 }}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
               >
-                All Origins
+                Todos los Orígenes
               </button>
               {ORIGINS.map((origin) => (
                 <button
@@ -124,7 +129,7 @@ export function FilterBar({
                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
-            Process {selectedProcess && `: ${selectedProcess}`}
+            Proceso {selectedProcess && `: ${selectedProcess}`}
           </button>
           {showProcess && (
             <div className="absolute z-10 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
@@ -135,7 +140,7 @@ export function FilterBar({
                 }}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
               >
-                All Processes
+                Todos los Procesos
               </button>
               {PROCESSES.map((process) => (
                 <button
@@ -167,7 +172,7 @@ export function FilterBar({
                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
-            Roaster {selectedRoaster && `: ${selectedRoaster}`}
+            Tostador {selectedRoaster && `: ${selectedRoaster}`}
           </button>
           {showRoaster && (
             <div className="absolute z-10 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 max-h-64 overflow-y-auto">
@@ -178,7 +183,7 @@ export function FilterBar({
                 }}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
               >
-                All Roasters
+                Todos los Tostadores
               </button>
               {ROASTERS.map((roaster) => (
                 <button
@@ -210,7 +215,7 @@ export function FilterBar({
                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
-            Status {selectedStatus && `: ${selectedStatus}`}
+            Estado {selectedStatus && `: ${statusLabels[selectedStatus]}`}
           </button>
           {showStatus && (
             <div className="absolute z-10 mt-2 w-40 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700">
@@ -221,7 +226,7 @@ export function FilterBar({
                 }}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
               >
-                All Statuses
+                Todos los Estados
               </button>
               {statusOptions.map((status) => (
                 <button
@@ -236,7 +241,7 @@ export function FilterBar({
                       : "text-gray-700 dark:text-gray-300"
                   }`}
                 >
-                  {status}
+                  {statusLabels[status]}
                 </button>
               ))}
             </div>
@@ -249,7 +254,7 @@ export function FilterBar({
             onClick={clearAll}
             className="px-4 py-2 rounded-md text-sm font-medium bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 transition-colors"
           >
-            Clear All
+            Limpiar Todo
           </button>
         )}
       </div>

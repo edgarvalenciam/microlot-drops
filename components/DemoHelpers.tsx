@@ -23,23 +23,23 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
   const handleResetData = () => {
     if (
       confirm(
-        "Are you sure you want to reset all demo data? This will clear all reservations, commitments, payments, payouts, and financing offers."
+        "¿Estás seguro de que quieres restablecer todos los datos demo? Esto eliminará todas las reservas, compromisos, pagos, desembolsos y ofertas de financiación."
       )
     ) {
       resetToSeed();
-      alert("Demo data has been reset.");
+      alert("Los datos demo han sido restablecidos.");
     }
   };
 
   const handleSimulateReservations = () => {
     if (!dropId) {
-      alert("No drop selected for simulation.");
+      alert("No hay drop seleccionado para simular.");
       return;
     }
 
     const drop = state.drops.find((d) => d.id === dropId);
     if (!drop) {
-      alert("Drop not found.");
+      alert("Drop no encontrado.");
       return;
     }
 
@@ -48,7 +48,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
     const needed = Math.max(0, drop.goalGrams - reservedGrams);
 
     if (needed === 0) {
-      alert("This drop is already completed!");
+      alert("¡Este drop ya está completado!");
       return;
     }
 
@@ -82,7 +82,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
     }
 
     alert(
-      `Created ${numToCreate} simulated reservation${numToCreate !== 1 ? "s" : ""} for this drop.`
+      `Se crearon ${numToCreate} reserva${numToCreate !== 1 ? "s" : ""} simulada${numToCreate !== 1 ? "s" : ""} para este drop.`
     );
   };
 
@@ -93,19 +93,19 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
         className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-lg font-semibold text-sm"
         aria-label="Toggle demo helpers"
       >
-        Demo Tools
+        Herramientas Demo
       </button>
 
       {isExpanded && (
         <div className="absolute bottom-full right-0 mb-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl p-4 min-w-[250px]">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-              Demo Helpers
+              Herramientas Demo
             </h3>
             <button
               onClick={() => setIsExpanded(false)}
               className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-              aria-label="Close demo helpers"
+              aria-label="Cerrar herramientas demo"
             >
               ✕
             </button>
@@ -118,7 +118,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
               className="block w-full text-left px-3 py-2 bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30 text-green-700 dark:text-green-300 rounded text-sm font-medium transition-colors"
               onClick={() => setIsExpanded(false)}
             >
-              {isRoasterView ? "Switch to Customer View" : "Switch to Roaster View"}
+              {isRoasterView ? "Cambiar a Vista Cliente" : "Cambiar a Vista Tostador"}
             </Link>
 
             {isRoasterView && (
@@ -127,7 +127,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
                 className="block w-full text-left px-3 py-2 bg-amber-50 dark:bg-amber-900/20 hover:bg-amber-100 dark:hover:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-sm font-medium transition-colors"
                 onClick={() => setIsExpanded(false)}
               >
-                View Financing Offer
+                Ver Oferta de Financiación
               </Link>
             )}
 
@@ -136,7 +136,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
                 onClick={handleSimulateReservations}
                 className="w-full text-left px-3 py-2 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm font-medium transition-colors"
               >
-                Simulate Reservations
+                Simular Reservas
               </button>
             )}
 
@@ -144,7 +144,7 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
               onClick={handleResetData}
               className="w-full text-left px-3 py-2 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-700 dark:text-red-300 rounded text-sm font-medium transition-colors"
             >
-              Reset Demo Data
+              Restablecer Datos Demo
             </button>
           </div>
         </div>

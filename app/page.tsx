@@ -66,7 +66,7 @@ export default function Home() {
               Microlot Drops
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              Loading...
+              Cargando...
             </p>
           </div>
         </main>
@@ -87,19 +87,19 @@ export default function Home() {
               href="/my"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
             >
-              My Reservations
+              Mis Reservas
             </Link>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            Discover exclusive specialty coffee microlots from roasters across
-            Spain
+            Descubre microlotes exclusivos de café de especialidad de tostadores de toda
+            España
           </p>
 
           {/* Counters */}
           <div className="flex gap-6 mb-6">
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Active Drops
+                Drops Activos
               </div>
               <div className="text-2xl font-bold text-green-600 dark:text-green-400">
                 {activeCount}
@@ -107,7 +107,7 @@ export default function Home() {
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
               <div className="text-sm text-gray-600 dark:text-gray-400">
-                Completed Drops
+                Drops Completados
               </div>
               <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {completedCount}
@@ -130,14 +130,14 @@ export default function Home() {
 
         {/* Results count */}
         <div className="mb-4 text-gray-600 dark:text-gray-400">
-          Showing {filteredDrops.length} drop{filteredDrops.length !== 1 ? "s" : ""}
+          Mostrando {filteredDrops.length} drop{filteredDrops.length !== 1 ? "s" : ""}
         </div>
 
         {/* Drops Grid */}
         {filteredDrops.length === 0 ? (
           <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              No drops found matching your filters.
+              No se encontraron drops que coincidan con tus filtros.
             </p>
           </div>
         ) : (

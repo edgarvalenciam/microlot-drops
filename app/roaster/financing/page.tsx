@@ -108,7 +108,7 @@ export default function RoasterFinancingPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-              Financing
+              Financiación
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
               {CURRENT_ROASTER}
@@ -118,7 +118,7 @@ export default function RoasterFinancingPage() {
             href="/roaster"
             className="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg transition-colors"
           >
-            Back to Dashboard
+            Volver al Panel
           </Link>
         </div>
 

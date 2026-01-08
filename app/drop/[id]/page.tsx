@@ -30,13 +30,13 @@ export default function DropDetailPage({
       <div className="min-h-screen bg-gray-50 dark:bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Drop not found
+            Drop no encontrado
           </h1>
           <Link
             href="/"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Return to drops feed
+            Volver al feed de drops
           </Link>
         </div>
       </div>
@@ -89,6 +89,12 @@ export default function DropDetailPage({
     return paymentId;
   };
 
+  const statusLabels: Record<DropStatus, string> = {
+    ACTIVE: "ACTIVO",
+    COMPLETED: "COMPLETADO",
+    EXPIRED: "CADUCADO",
+  };
+
   const statusColors: Record<DropStatus, string> = {
     ACTIVE: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     COMPLETED:
@@ -108,7 +114,7 @@ export default function DropDetailPage({
           href="/"
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
         >
-          ← Back to drops
+          ← Volver a drops
         </Link>
 
         {/* Hero Section */}
@@ -140,7 +146,7 @@ export default function DropDetailPage({
                 <span
                   className={`px-3 py-1 rounded-md text-sm font-semibold ${statusColors[status]}`}
                 >
-                  {status}
+                  {statusLabels[status]}
                 </span>
               </div>
             </div>
@@ -155,21 +161,21 @@ export default function DropDetailPage({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
               <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                Goal
+                Objetivo
               </div>
               <div className="text-2xl font-bold text-gray-900 dark:text-white">
                 {formatGrams(drop.goalGrams)}
               </div>
               <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                {formatGrams(reservedGrams)} reserved
+                {formatGrams(reservedGrams)} reservados
               </div>
               <div className="text-xs text-gray-400 dark:text-gray-500 mt-1">
-                Max {formatGrams(capGrams)} (115%)
+                Máx {formatGrams(capGrams)} (115%)
               </div>
             </div>
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
               <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                Deadline
+                Fecha Límite
               </div>
               <div className="text-xl font-semibold text-gray-900 dark:text-white">
                 {formatDate(drop.deadlineISO)}
@@ -183,7 +189,7 @@ export default function DropDetailPage({
           {/* Pricing */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Pricing
+              Precios
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -217,7 +223,7 @@ export default function DropDetailPage({
           {drop.tastingNotes && drop.tastingNotes.length > 0 && (
             <div className="mb-8">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Tasting Notes
+                Notas de Cata
               </h2>
               <div className="flex flex-wrap gap-2">
                 {drop.tastingNotes.map((note, index) => (
@@ -236,7 +242,7 @@ export default function DropDetailPage({
           {drop.roastDateEstimateISO && (
             <div className="mb-8">
               <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-                Estimated Roast Date
+                Fecha Estimada de Tostado
               </div>
               <div className="text-lg font-semibold text-gray-900 dark:text-white">
                 {formatDate(drop.roastDateEstimateISO)}
@@ -249,14 +255,14 @@ export default function DropDetailPage({
             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
               {isSoldOut ? (
                 <div className="inline-block bg-gray-400 cursor-not-allowed text-white font-semibold py-3 px-8 rounded-lg text-center">
-                  Sold out / Cap reached
+                  Agotado / Límite alcanzado
                 </div>
               ) : (
                 <Link
                   href={`/reserve/${drop.id}`}
                   className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors text-center"
                 >
-                  Reserve my bag
+                  Reservar mi bolsa
                 </Link>
               )}
             </div>
@@ -266,7 +272,7 @@ export default function DropDetailPage({
           {canUserPay && userReservation && userCommitment && (
             <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Complete Your Purchase
+                Completa Tu Compra
               </h3>
               <PaymentButton
                 drop={drop}
@@ -281,44 +287,44 @@ export default function DropDetailPage({
         {/* How it Works */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            How it works
+            Cómo funciona
           </h2>
           <div className="space-y-4 text-gray-700 dark:text-gray-300">
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                1. Reserve your bag
+                1. Reserva tu bolsa
               </h3>
               <p>
-                Choose your size, grind preference, and delivery method. Your
-                reservation is free and holds your spot.
+                Elige tu tamaño, preferencia de molido y método de entrega. Tu
+                reserva es gratuita y garantiza tu lugar.
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                2. Authorize payment commitment
+                2. Autoriza el compromiso de pago
               </h3>
               <p>
-                Connect your bank and authorize a payment commitment. This
-                allows us to charge you only if the drop completes.
+                Conecta tu banco y autoriza un compromiso de pago. Esto
+                nos permite cobrarte solo si el drop se completa.
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                3. Pay only if completed
+                3. Paga solo si se completa
               </h3>
               <p>
-                You will only be charged if the drop reaches its goal ({formatGrams(drop.goalGrams)}) before the deadline ({formatDate(drop.deadlineISO)}).
-                If it doesn&apos;t complete, no charge is made and your
-                reservation is automatically canceled.
+                Solo se te cobrará si el drop alcanza su objetivo ({formatGrams(drop.goalGrams)}) antes de la fecha límite ({formatDate(drop.deadlineISO)}).
+                Si no se completa, no se realiza ningún cargo y tu
+                reserva se cancela automáticamente.
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                4. Enjoy your coffee
+                4. Disfruta tu café
               </h3>
               <p>
-                Once the drop completes and payment is confirmed, we&apos;ll
-                roast and ship your coffee to your door.
+                Una vez que el drop se complete y el pago se confirme, tostaremos
+                y enviaremos tu café a tu puerta.
               </p>
             </div>
           </div>
