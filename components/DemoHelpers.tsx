@@ -12,9 +12,6 @@ interface DemoHelpersProps {
   dropId?: string;
 }
 
-// Only show in development
-const isDev = process.env.NODE_ENV !== "production";
-
 export function DemoHelpers({ dropId }: DemoHelpersProps) {
   const { state, resetToSeed, addReservation, addDrop } = useAppState();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,10 +19,6 @@ export function DemoHelpers({ dropId }: DemoHelpersProps) {
   
   // Determine if we're in roaster view
   const isRoasterView = pathname?.startsWith("/roaster") ?? false;
-
-  if (!isDev) {
-    return null;
-  }
 
   const handleResetData = () => {
     if (
