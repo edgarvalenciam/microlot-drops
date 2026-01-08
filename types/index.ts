@@ -31,6 +31,7 @@ export type Process =
   | "Yeast Inoculated";
 
 export type Roaster =
+  // España
   | "Coffee Mori"
   | "D·Origen Coffee Roasters"
   | "Factoría 77"
@@ -42,7 +43,51 @@ export type Roaster =
   | "Puchero"
   | "Right Side Coffee"
   | "Sakona Coffee Roasters"
-  | "Zeri's Coffee Roaster";
+  | "Zeri's Coffee Roaster"
+  // Alemania
+  | "Bonanza Coffee Roasters"
+  | "Five Elephant"
+  | "The Barn"
+  // Francia
+  | "Belleville Brûlerie"
+  | "Café Lomi"
+  | "Terres de Café"
+  // Italia
+  | "Gardelli Specialty Coffees"
+  | "Ditta Artigianale"
+  | "Caffè Vergnano"
+  // Reino Unido
+  | "Square Mile Coffee Roasters"
+  | "Workshop Coffee"
+  | "Origin Coffee"
+  // Países Bajos
+  | "Friedhats"
+  | "Manhattan Coffee Roasters"
+  | "White Label Coffee"
+  // Dinamarca
+  | "Coffee Collective"
+  | "La Cabra"
+  | "Prolog Coffee"
+  // Suecia
+  | "Drop Coffee"
+  | "Johan & Nyström"
+  | "Koppi"
+  // Noruega
+  | "Tim Wendelboe"
+  | "Supreme Roastworks"
+  | "Solberg & Hansen"
+  // Suiza
+  | "MAME"
+  | "Stoll Kaffee"
+  // Austria
+  | "Coffee Pirates"
+  | "J. Hornig"
+  // Bélgica
+  | "Caffènation"
+  | "MOK Coffee"
+  // Portugal
+  | "Fábrica Coffee Roasters"
+  | "7g Roaster";
 
 export type DropStatus = "ACTIVE" | "COMPLETED" | "EXPIRED";
 

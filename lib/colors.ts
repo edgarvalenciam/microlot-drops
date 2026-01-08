@@ -36,6 +36,7 @@ export const PROCESS_COLORS: Record<Process, string> = {
 };
 
 export const ROASTER_COLORS: Record<Roaster, string> = {
+  // España
   "Coffee Mori": "#2F4F4F", // DarkSlateGray
   "D·Origen Coffee Roasters": "#696969", // DimGray
   "Factoría 77": "#778899", // LightSlateGray
@@ -48,5 +49,49 @@ export const ROASTER_COLORS: Record<Roaster, string> = {
   "Right Side Coffee": "#7B68EE", // MediumSlateBlue
   "Sakona Coffee Roasters": "#9370DB", // MediumPurple
   "Zeri's Coffee Roaster": "#BA55D3", // MediumOrchid
+  // Alemania
+  "Bonanza Coffee Roasters": "#CD5C5C", // IndianRed
+  "Five Elephant": "#DC143C", // Crimson
+  "The Barn": "#B22222", // FireBrick
+  // Francia
+  "Belleville Brûlerie": "#FF69B4", // HotPink
+  "Café Lomi": "#FF1493", // DeepPink
+  "Terres de Café": "#C71585", // MediumVioletRed
+  // Italia
+  "Gardelli Specialty Coffees": "#8B0000", // DarkRed
+  "Ditta Artigianale": "#A52A2A", // Brown
+  "Caffè Vergnano": "#800000", // Maroon
+  // Reino Unido
+  "Square Mile Coffee Roasters": "#191970", // MidnightBlue
+  "Workshop Coffee": "#000080", // Navy
+  "Origin Coffee": "#0000CD", // MediumBlue
+  // Países Bajos
+  Friedhats: "#FF4500", // OrangeRed
+  "Manhattan Coffee Roasters": "#FF6347", // Tomato
+  "White Label Coffee": "#FF7F50", // Coral
+  // Dinamarca
+  "Coffee Collective": "#228B22", // ForestGreen
+  "La Cabra": "#32CD32", // LimeGreen
+  "Prolog Coffee": "#00FF00", // Lime
+  // Suecia
+  "Drop Coffee": "#00CED1", // DarkTurquoise
+  "Johan & Nyström": "#48D1CC", // MediumTurquoise
+  Koppi: "#20B2AA", // LightSeaGreen
+  // Noruega
+  "Tim Wendelboe": "#4169E1", // RoyalBlue
+  "Supreme Roastworks": "#1E90FF", // DodgerBlue
+  "Solberg & Hansen": "#00BFFF", // DeepSkyBlue
+  // Suiza
+  MAME: "#9370DB", // MediumPurple
+  "Stoll Kaffee": "#8A2BE2", // BlueViolet
+  // Austria
+  "Coffee Pirates": "#FFD700", // Gold
+  "J. Hornig": "#FFA500", // Orange
+  // Bélgica
+  Caffènation: "#FF8C00", // DarkOrange
+  "MOK Coffee": "#FF7F50", // Coral
+  // Portugal
+  "Fábrica Coffee Roasters": "#2E8B57", // SeaGreen
+  "7g Roaster": "#3CB371", // MediumSeaGreen
 };
 

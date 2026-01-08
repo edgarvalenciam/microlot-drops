@@ -92,7 +92,7 @@ export default function Home() {
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
             Descubre microlotes exclusivos de café de especialidad de tostadores de toda
-            España
+            Europa
           </p>
 
           {/* Counters */}
